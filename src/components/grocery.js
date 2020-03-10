@@ -1,5 +1,6 @@
 import React from 'react'
 import Form from './form'
+import Cart from './cart'
 
 class Grocery extends React.Component {
 
@@ -7,33 +8,37 @@ class Grocery extends React.Component {
     super(props)
     this.state = {
       groceries: [
-        {item: 'Shaved Bonito', qty: 1},
-        {item: 'Udon Noodle', qty: 2}
+        {item: 'Shaved Bonito', qty: 1, inCart: false},
+        {item: 'Udon Noodle', qty: 2, inCart: false}
       ]
     }
-    const styles = {
-      need: {cursor: 'pointer', border: '1px solid', borderRadius: '6px'}, 
-      have: {color: 'grey', textDecorationLine: 'line-through'}
-    }
+ 
   }
 
+  
   groceryClick = (i) => {
     console.log('clicked' + i)
-    //pick up here
+    
   }
   
   renderGroceryList = () => {
     return this.state.groceries.map((item, i) => 
-      <div key={`id${i}`} onClick={() => this.groceryClick(i)} >
-        {item.item} <br/> Qty: {item.qty}<br/><br/>
-      </div>
-      )
-  }
+    <Cart 
+    key={`groceryItem ${i}`} 
+    item={item.item}
+    qty={item.qty} 
+    groceryClick={() => this.groceryClick(i)}
+    inCart ={item.inCart}/>
+    )} 
+      
+      
+
+  
 
 
 
   addItem = (newItem, qty) => {
-    let newEntry = {item: newItem, qty: qty};
+    let newEntry = {item: newItem, qty: qty, inCart: false};
     console.log(newEntry)
     this.setState({
       groceries: [newEntry, ...this.state.groceries]
