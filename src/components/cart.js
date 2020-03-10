@@ -5,6 +5,7 @@ const Cart = ({item, qty, inCart, groceryClick}) => (
     <h4>{item}</h4>
     <h5>Qty: {qty}</h5>
   </div>
+   
 )
 
 const  styles = {

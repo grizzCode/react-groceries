@@ -24,6 +24,7 @@
 
     render = () => {
       return (
+      <>
       <div>
       <form onSubmit={this.handleSubmit}>
         <input name='item' onChange={event => this.handleChange(event)} required placeholder='Enter Item'/>
@@ -32,6 +33,10 @@
       </form>
       <hr/>
       </div>
+      <div>
+        
+      </div>
+      </>
       )}
 
   }

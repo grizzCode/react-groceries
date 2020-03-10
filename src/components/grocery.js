@@ -2,6 +2,7 @@ import React from 'react'
 import Form from './form'
 import Cart from './cart'
 
+
 class Grocery extends React.Component {
 
   constructor(props) {
@@ -35,21 +36,32 @@ class Grocery extends React.Component {
     });
   }
   
+  groceryDelete = (delItem) => {
+    console.log('delete');
+    const { groceries } = this.state;
+    const removed = groceries.filter(item => item !== delItem) 
+    return this.setState({
+      groceries: removed
+    })
+  };
+  
   renderGroceryList = () => {
     return this.state.groceries.map((item, i) => 
+    <React.Fragment key={`groceryItem ${i}`} >
+    <div>
     <Cart 
-    key={`groceryItem ${i}`} 
-    item={item.item}
-    qty={item.qty} 
-    groceryClick={() => this.groceryClick(i)}
-    inCart ={item.inCart}/>
-    )} 
-      
-      
-
-  
-
-
+      item={item.item}
+      qty={item.qty} 
+      groceryClick={() => this.groceryClick(i)}
+      inCart ={item.inCart}/>
+    </div>
+    <div>
+      <button >EDIT</button>
+      <button onClick={() => this.groceryDelete(item)}>DELETE</button>
+    </div>
+    </React.Fragment>
+    )};
+    
 
   addItem = (newItem, qty) => {
     let newEntry = {item: newItem, qty: qty, inCart: false};
@@ -67,8 +79,8 @@ class Grocery extends React.Component {
       <div>
       <Form addItem={this.addItem}/>
       {this.renderGroceryList()}
+      {this.editCart}
       </div>
-    
     )};
 }
 
