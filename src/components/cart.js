@@ -1,13 +1,14 @@
 import React from 'react'
 
 const Cart = ({item, qty, inCart, groceryClick}) => (
-  <div onClick={groceryClick} style={ inCart ? styles.need : styles.have}>
-    {item}
+  <div onClick={groceryClick} style={ inCart ? styles.have : styles.need}>
+    <h4>{item}</h4>
+    <h5>Qty: {qty}</h5>
   </div>
 )
 
 const  styles = {
-  need: {cursor: 'pointer', border: '1px solid', borderRadius: '6px'}, 
+  need: {cursor: 'pointer'}, 
   have: {color: 'grey', textDecorationLine: 'line-through'}
 }
 

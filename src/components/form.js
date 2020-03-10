@@ -12,7 +12,6 @@
     
 
     handleSubmit = (event) => {
-    alert('A grocery item was submitted: ' + this.state.item + ' Qty: ' + this.state.qty)
     event.preventDefault();
     this.props.addItem(this.state.item, this.state.qty)
   }

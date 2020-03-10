@@ -18,7 +18,18 @@ class Grocery extends React.Component {
   
   groceryClick = (i) => {
     console.log('clicked' + i)
-    
+    const { groceries } = this.state;
+    const putInCart = groceries.map((item, index) => {
+      if (index == i) {
+        return {
+          ...item,
+          inCart: !item.inCart
+        }
+      }
+        return item
+      });
+      
+    console.log(putInCart)
   }
   
   renderGroceryList = () => {
