@@ -30,6 +30,9 @@ class Grocery extends React.Component {
       });
       
     console.log(putInCart)
+    this.setState ({
+      groceries: putInCart
+    });
   }
   
   renderGroceryList = () => {
